@@ -6,17 +6,10 @@ class ImageResizer {
   constructor(folder) {
     this.folder = folder
   }
-  async save(buffer) {
+  async save(buffer, imageSize) {
     const filename = ImageResizer.filename()
     const filepath = this.filepath(filename)
-
-    await sharp(buffer)
-      .resize(300, 300, {
-        fit: sharp.fit.inside,
-        withoutEnlargement: true
-      })
-      .toFile(filepath)
-    
+    await sharp(buffer).resize(imageSize.width, imageSize.height, {}).toFile(filepath)
     return filename
   }
   static filename() {
