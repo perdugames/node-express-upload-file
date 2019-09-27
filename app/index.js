@@ -8,7 +8,6 @@ const uploadRoutes = require('./routes/upload-routes')
 app.use('/upload', uploadRoutes)
 app.use(express.static('../public'))
 app.set('view engine', 'ejs')
-//app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 app.post('/', function(req, res) {
